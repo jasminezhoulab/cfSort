@@ -24,7 +24,7 @@ There is no non-standard hardware required.
 
 The code is programmed by C++. For running the code, please go to the directory "src/" and do the following steps:
 
-1. Edit Makefile to provide the directories of include and library of three libraries: Boost and zlib.
+1. Edit Makefile to provide the directories of include and two libraries: Boost and zlib.
 
 2. Type the following command to build executable file "cfsort":
 
