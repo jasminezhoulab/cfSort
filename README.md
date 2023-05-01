@@ -63,7 +63,7 @@ model_pred.py requires the following inputs:
 
 model_pred.py saves the predictions in the pred_filename. The predictions is in tab-delimited format, containing the tissue compositions of the testing samples in the same order as in the testing data tfrecord file. 
 
-We provide two pre-trained DNNs which are the component DNNs of the cfSort: DNN1.h5 and DNN2.h5. cfSort ensembles the two DNNs by averaging the tissue compositions.
+We provide two pre-trained DNNs which are the component DNNs of the cfSort: DNN1.h5 and DNN2.h5. Due to the limit of file size on GitHub, we deposit these two models on https://zenodo.org/record/7884243. cfSort ensembles the two DNNs by averaging the tissue compositions.
 
 
 ## Citation
