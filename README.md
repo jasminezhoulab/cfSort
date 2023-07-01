@@ -20,9 +20,25 @@ There is no non-standard hardware required.
 
 ## Usage
 
-There are two core scripts: 
-1) model_train.py, to train the DNN models
-2) model_pred.py, to estimate tissue composition of testing samples using the pre-trained DNN models.
+There are three core scripts: 
+1) data_prep.py, to prepare training, validation, and testing data matrices to tensorflow tfrecords.  
+2) model_train.py, to train the DNN models
+3) model_pred.py, to estimate tissue composition of testing samples using the pre-trained DNN models.
+
+
+### Prepare data
+
+data_prep.py requires the following inputs:
+1) label_filename: the file containing labels of the training and validation data, e.g. demo/input.label.txt. This file contains sample id (1st column), train/validation group id (2nd column, 0 = testing, 1 = training, 2 = validation), and ground-truth tissue fraction (3-31th columns).
+2) filename: the data matrix file containing training and validation samples, e.g. demo/input.train_valid.txt. This file contains sample id (1st column), and features (2+ columns). The features were ordered as in the marker file (marker/cfSort_markers.txt.gz, column marker_cluster_index).
+3) test_filename: the data matrix file containing testing samples, e.g. demo/input.test.txt. This file has the same format as the training/validation data. 
+4) train_output_filename: the output filename for the training data, e.g. demo/output.train.tfrecords.
+5) valid_output_filename: the output filename for the validation data, e.g. demo/output.valid.tfrecords.
+6) test_output_filename: the output filename for the testing data, e.g. demo/output.test.tfrecords.
+
+usage: python data_prep.py label_filename filename test_filename train_output_filename valid_output_filename test_output_filename
+
+The demo output was in the demo folder.
 
 ### Train DNN models
 
@@ -32,25 +48,17 @@ model_train.py requires the following inputs:
 3) samples_list_file: a list of sample ids used in the training.
 4) num_nodes: number of nodes in each hidden layer, comma delimited, e.g. "1024,512,32".
 5) rate_dropout: dropout rates in each hidden layer, comma delimited, e.g. "0.05,0.01,0". Note that the numbers in rate_dropout has to be consistent with the number in num_nodes.
-6) step: number of steps per epoch. This number can be automatically learned at the beginning of the training.
-7) learning_rate: starting learning rate of the DNN, e.g. 0.001
-8) batch_size: number of samplers per minibatch, e.g. 32
-9) loss: name of the loss function, e.g. mae
-10) optimizer: optimizer, e.g. Adam.
-11) output_prefix: prefix of output files
-12) epoch: max epochs in the training process
-13) num_features: number of numerical features in the training and testing data
-14) fixed_learning_rate: False
-15) epoch_start: 0
-16) model_file: path to a model ".h5" file.
-17) new_model: boolean, if training starts from a new model. If False, a model_file is required.
-18) is_cpu: boolean, if training is done on CPU
-19) initializer: initializer used in the dense layers
-20) global_seed: random seed
-21) train_size: number of training samples
+6) learning_rate: starting learning rate of the DNN, e.g. 0.001
+7) batch_size: number of samplers per minibatch, e.g. 32
+8) loss: name of the loss function, e.g. mae
+9) optimizer: optimizer, e.g. Adam.
+10) output_prefix: prefix of output files
+11) epoch: max epochs in the training process
+12) global_seed: random seed
 
 model_train.py will output logging files (\<output_prefix\>.\*.txt) and a final model file (\<output_prefix\>.model.h5).
 
+usage: python model_train.py train_file test_file samples_list_file num_nodes rate_dropout learning_rate batch_size loss optimizer output_prefix epoch global_seed
 
 ### Predict with pre-trained DNNs
 
@@ -58,12 +66,14 @@ model_pred.py requires the following inputs:
 1) test_filename: testing data in the tfrecord format, where each sample is formatted as \{"features": \<numerical features at markers\>\}.
 2) model_filename: pre-trained DNN model, e.g. DNN1.h5
 3) pred_filename: output file name
-4) num_features: number of numerical features in the testing data
-5) has_label: False
 
 model_pred.py saves the predictions in the pred_filename. The predictions is in tab-delimited format, containing the tissue compositions of the testing samples in the same order as in the testing data tfrecord file. 
 
+usage: python model_pred.py test_filename model_filename pred_filename
+
 We provide two pre-trained DNNs which are the component DNNs of the cfSort: DNN1.h5 and DNN2.h5. Due to the limit of file size on GitHub, we deposit these two models on https://zenodo.org/record/7884243. cfSort ensembles the two DNNs by averaging the tissue compositions.
+
+
 
 
 ## Citation
