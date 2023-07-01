@@ -106,8 +106,6 @@ def import_data_from_text_export_to_tfrecord_testonly(filename, test_output_file
 				sample_id = items[0]
 				x_features = np.array([float(items[i]) if items[i] != "NA" and items[i] != "" else 0.0 for i in range(1, len(items))])
 				x_norm_features = normalize_features(x_features, norm_params, norm_option)
-#				y_labels = label_dict[sample_id]
-#				feature_dict = {"features": _float_feature(x_norm_features), "labels": _float_feature(y_labels)}
 				feature_dict = {"features": _float_feature(x_norm_features)}
 				sample = tf.train.Example(features = tf.train.Features(feature = feature_dict))
 				test_writer.write(sample.SerializeToString())
