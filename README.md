@@ -77,3 +77,4 @@ We provide two pre-trained DNNs which are the component DNNs of the cfSort: DNN1
 
 
 ## Citation
+Li S, Zeng W, Ni X, Liu Q, Li W, Stackpole ML, Zhou Y, Gower A, Krysan K, Ahuja P, Lu DS, Raman SS, Hsu W, Aberle DR, Magyar CE, French SW, Han SB, Garon EB, Agopian VG, Wong WH, Dubinett SM, Zhou XJ. Comprehensive tissue deconvolution of cell-free DNA by deep learning for disease diagnosis and monitoring. Proc Natl Acad Sci U S A. 2023 Jul 11;120(28):e2305236120. doi: 10.1073/pnas.2305236120. Epub 2023 Jul 3. PMID: 37399400. [link(https://www.pnas.org/doi/10.1073/pnas.2305236120)]
