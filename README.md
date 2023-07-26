@@ -44,7 +44,7 @@ The demo output was in the demo folder.
 
 model_train.py requires the following inputs:
 1) train_file: training data in the tfrecord format, where each sample is formatted as \{"features": \<numerical features at markers\>, label: \<ground truth tissue composition\>\}.
-2) test_file: validation data in the tfrecord format, where each sample is formatted as \{"features": \<numerical features at markers\>, label: \<ground truth tissue composition\>\}.
+2) valid_file: validation data in the tfrecord format, where each sample is formatted as \{"features": \<numerical features at markers\>, label: \<ground truth tissue composition\>\}.
 3) samples_list_file: a list of sample ids used in the training.
 4) num_nodes: number of nodes in each hidden layer, comma delimited, e.g. "1024,512,32".
 5) rate_dropout: dropout rates in each hidden layer, comma delimited, e.g. "0.05,0.01,0". Note that the numbers in rate_dropout has to be consistent with the number in num_nodes.
