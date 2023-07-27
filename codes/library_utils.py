@@ -98,7 +98,7 @@ def import_data_from_text_export_to_tfrecord(filename, train_output_filename, te
 
 
 
-def import_data_from_text_export_to_tfrecord_testonly(filename, test_output_filename, norm_params, label_dict, norm_option = "log_min_max"):
+def import_data_from_text_export_to_tfrecord_testonly(filename, test_output_filename, norm_params, norm_option = "log_min_max"):
 	with open(filename, 'r') as f:
 		with tf.io.TFRecordWriter(test_output_filename) as test_writer:
 			for line in f:
