@@ -1,13 +1,14 @@
 Below are descriptions for each field of cfSort_markers.txt.gz
 
-1) chrom: chromosome id of the marker
-2) start: start genome coordinate of the marker
-3) end: end genome coordinate of the marker
-4) marker_cluster_index: the marker cluster id that this marker belongs to. The marker cluster id corresponds to the feature columns in the data matrix.
-5) alpha_threshold: The alpha threshold that defines the hypo-methylated reads.
-6) marker_type: the marker selection strategy from which this marker is selected.
-7) pair_comparison: the pair comparison from which this marker is selected.
-8) rank: the rank of this marker in the pair comparison.
+1) region_index: the index of the genomic region.
+2) alpha_threshold: the alpha threshold that defines the hypo-methylated reads.
+3) chrom: chromosome id of the marker.
+4) start: start genome coordinate of the marker.
+5) end: end genome coordinate of the marker.
+6) marker_cluster_index: the marker cluster id that this marker belongs to. The marker cluster id corresponds to the feature columns in the data matrix.
+7) marker_type: the marker selection strategy from which this marker is selected.
+8) pair_comparison: the pair comparison from which this marker is selected.
+9) rank: the rank of this marker in the pair comparison.
 
 For details, please refer to cfSort manuscript and SI appendix.
 
