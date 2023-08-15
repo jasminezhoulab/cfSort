@@ -74,6 +74,9 @@ usage: python model_pred.py test_filename model_filename pred_filename
 We provide two pre-trained DNNs which are the component DNNs of the cfSort: DNN1.h5 and DNN2.h5. Due to the limit of file size on GitHub, we deposit these two models on https://zenodo.org/record/7884243. cfSort ensembles the two DNNs by averaging the tissue compositions.
 
 
+## Preprocessing data
+
+We included a preprocessing pipeline in bash `preprocess.sh` in the `preprocess` directory. This pipeline takes the bismark-aligned bam file as input and outputs the feature vector that is ready to be used in the `data_prep.py`. 
 
 
 ## Citation
