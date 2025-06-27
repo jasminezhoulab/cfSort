@@ -73,6 +73,7 @@ usage: python model_pred.py test_filename model_filename pred_filename
 
 We provide two pre-trained DNNs which are the component DNNs of the cfSort: DNN1.h5 and DNN2.h5. Due to the limit of file size on GitHub, we deposit these two models on https://zenodo.org/record/7884243. cfSort ensembles the two DNNs by averaging the tissue compositions.
 
+The output tissue fractions correspond to tissue types in alphabetical order: adipose_tissue, adrenal_gland, bladder, blood_vessel, brain, breast, cervix_uteri, colon, esophagus, fallopian_tube, heart, kidney, liver, lung, muscle, nerve, ovary, pancreas, pituitary, prostate, salivary_gland, skin, small_intestine, spleen, stomach, testis, thyroid, uterus, vagina, and WBC.
 
 ## Preprocessing data
 
